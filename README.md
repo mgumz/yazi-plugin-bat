@@ -4,17 +4,8 @@ Plugin for `Yazi` to preview all supported files via `Bat`.
 
 ## Preview
 
-Showing .csv files
+![preview](./preview.png)
 
-![CSV via bat](./yazi-bat--csv.png)
-
-Previewing .md files
-
-![Markdown via bat](./yazi-bat--markdown.png)
-
-Previewing .rs files
-
-![Rust via bat](./yazi-bat--rust.png)
 
 ## Installation
 
@@ -30,8 +21,17 @@ Edit `~/.config/yazi/yazi.toml` and add `bat` as the previewer for the file type
 ```toml
 [plugin]
 prepend_previewers = [
-    { name = "*.csv", exec = "bat" },
-    { name = "*.md", exec = "bat" }
+    { name = "*.csv", run = "bat" },
+    { name = "*.md", run = "bat" }
+]
+
+previewers = [
+	{ name = "*/", run = "folder", sync = true },
+	{ mime = "text/*",                 run = "bat" },
+	{ mime = "*/xml",                  run = "bat" },
+	{ mime = "*/cs",                   run = "bat" },
+	{ mime = "*/javascript",           run = "bat" },
+	{ mime = "*/x-wine-extension-ini", run = "bat" },
 ]
 ```
 
