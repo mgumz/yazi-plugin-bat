@@ -34,7 +34,9 @@ function M:peek(job)
             { tostring(math.max(0, i - limit)), only_if = tostring(job.file.url), upper_bound = "" }
         )
     else
-        lines = lines:gsub("\t", string.rep(" ", PREVIEW.tab_size))
+        -- PREVIEW global not available in yazi 25.4.8
+        lines = lines:gsub("\t", string.rep(" ", 4))
+        -- lines = lines:gsub("\t", string.rep(" ", PREVIEW.tab_size))
         ya.preview_widgets(job, { ui.Text.parse(lines):area(job.area), })
     end
 end
